@@ -2,7 +2,8 @@
 Goal is to train a neural network with tetris data \
 Things to do: 
 - Scrape games 
-- Create a version of tetris in python suited for 40L sprint 
+- Create a version of tetris in python suited for 40L sprint
+- At a later state, we can maybe make it pretty using django
 
 Short break with development to watch \
 https://youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ \
