@@ -2,6 +2,7 @@
 Goal is to train a neural network with tetris data \
 Things to do: 
 - Scrape games and transform it into readable game instructions ✔
+  - messy data! Some people are doing 10 PC which needs to be filtered away. 
 - Create a version of tetris in python suited for 40L sprint, that can take instructions.
   - Board with methods:
     - Print board ✔
