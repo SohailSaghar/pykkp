@@ -12,8 +12,9 @@ Things to do:
     - Board height
   - Pieces with methods
     - TBD
+    - Might not be any reason to make SRS yet. Can be implemented later, but for 40L sprint it is not needed
 
-We need to transform the queue into pieces first
+We need to transform the queue into pieces first.
   
 Short break with development to watch \
 https://youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ \
