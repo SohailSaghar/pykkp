@@ -1,4 +1,5 @@
 import execjs
+from queue import Queue
 
 
 # Notes:
@@ -16,33 +17,42 @@ import execjs
 #
 # We need to implement hold piece.
 #
+# We also need to implement pieces and their rotations
+#
 
-def get_queue(seed):
+def get_queue(seed: str):
     with open('queue.js', 'r') as file:
         javascript_code = file.read()
     # It just looks at the code as a still picture. So we just run 110 getBlocks in queue.js
     # and return that to this file
     #
     context = execjs.compile(javascript_code)
-    queue = context.call('getQueue', str(seed))
+    queue = context.call('getQueue', seed)
     return queue
 
 
 class Board:
-    def __int__(self, seed: str):
-        self.dimensions = [['-' for _ in range(10)] for _ in range(40)]
-        self.hold_piece = None
-        self.pieces = get_queue(seed)
-        self.queue = Queue()
+    def __init__(self, seed: str):
+        self.dimensions: list = [['0' for _ in range(10)] for _ in range(40)]
+        self.hold_piece = None # maybe we need to transform this into pieces first when we make pieces.py
+        self.pieces: list = get_queue(seed)
+        self.queue: Queue = Queue()
+        self.cur_piece = None
 
     def print_board(self):
         # TODO: prints board
-        pass
+        for i in range(20):
+            for j in range(10):
+                print(self.dimensions[i][j], end="")
+            print()
 
     def __start_queue(self):
         # There are 5 pieces in the queue.
+        self.cur_piece = self.pieces.pop(0)
         for i in range(5):
             self.queue.put(self.pieces.pop(0))
+
+    __start_queue()
 
     def __remove_lines(self, lines: int):
         # TODO: removes 1-4 lines depending on
@@ -51,11 +61,19 @@ class Board:
     def hold_cur_piece(self):
         # TODO: remove piece in queue and insert to hold block.
         #       If there already exists a piece, we swap.
-        pass
+        if self.hold_piece is None:
+            self.hold_piece = self.cur_piece
+            self.cur_piece = self.queue.get()
+            self.queue.put(self.pieces.pop(0))
+        else:
+            temp = self.hold_piece.copy()
+            self.hold_piece = self.queue.get()
+            self.cur_piece = temp
 
     def board_height(self):
         pass
 
 
 if __name__ == '__main__':
-    print(get_queue("q9te4k"))
+    board = Board("q9te4k")
+    board.print_board()
