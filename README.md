@@ -9,6 +9,9 @@ Things to do:
     - Removes lines
     - Hold current piece
     - Board height
+  - Pieces with methods
+    - TBD
+    \
 Short break with development to watch \
 https://youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ \
 and other lectures that might be relevant (https://www.youtube.com/@Google_DeepMind/playlists) \
