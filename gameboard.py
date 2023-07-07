@@ -28,6 +28,34 @@ def get_queue(seed):
     return queue
 
 
+class Board:
+    def __int__(self, seed: str):
+        self.dimensions = [['-' for _ in range(10)] for _ in range(40)]
+        self.hold_piece = None
+        self.pieces = get_queue(seed)
+        self.queue = Queue()
+
+    def print_board(self):
+        # TODO: prints board
+        pass
+
+    def __start_queue(self):
+        # There are 5 pieces in the queue.
+        for i in range(5):
+            self.queue.put(self.pieces.pop(0))
+
+    def __remove_lines(self, lines: int):
+        # TODO: removes 1-4 lines depending on
+        pass
+
+    def hold_cur_piece(self):
+        # TODO: remove piece in queue and insert to hold block.
+        #       If there already exists a piece, we swap.
+        pass
+
+    def board_height(self):
+        pass
+
 
 if __name__ == '__main__':
     print(get_queue("q9te4k"))
